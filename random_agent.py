@@ -3,8 +3,6 @@
 A class that interacts with gym-like environments.
 """
 
-import time
-
 class RandomAgent():
     """Our RandomAgent class"""
 
@@ -41,7 +39,6 @@ class RandomAgent():
         self.env.render()
         total_reward = 0
         for action in self.best_actions:
-            time.sleep(.1)
             _, reward, _, _ = self.env.step(action)
             self.env.render()
             total_reward += reward
