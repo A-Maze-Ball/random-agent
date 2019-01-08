@@ -32,7 +32,7 @@ class RandomAgent():
             if self.best_reward is None or self.best_reward < total_reward:
                 self.best_reward = total_reward
                 self.best_actions = actions
-        print(f'Best reward during training: {total_reward}')
+        print(f'Best reward during training: {self.best_reward}')
 
     def play(self):
         self.env.reset()
