@@ -16,22 +16,24 @@ class RandomAgent():
             initial_state = self.env.reset()
             if should_render:
                 self.env.render()
-            # one episode
+
+            # play one episode
             done = False
             total_reward = 0
             actions = []
             while not done:
-                # (heading, speed) -> (0-359, 0-255)
                 action = self.env.action_space.sample()
                 actions.append(action)
                 new_state, reward, done, _ = self.env.step(action)
                 if should_render:
                     self.env.render()
+
                 total_reward += reward
 
             if self.best_reward is None or self.best_reward < total_reward:
                 self.best_reward = total_reward
                 self.best_actions = actions
+
         print(f'Best reward during training: {self.best_reward}')
 
     def play(self):
@@ -39,7 +41,10 @@ class RandomAgent():
         self.env.render()
         total_reward = 0
         for action in self.best_actions:
-            _, reward, _, _ = self.env.step(action)
+            _, reward, done, _ = self.env.step(action)
             self.env.render()
             total_reward += reward
+            if done:
+                break
+
         return total_reward
