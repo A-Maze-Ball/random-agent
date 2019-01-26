@@ -4,7 +4,7 @@ import os, sys
 import subprocess
 
 def main():
-    print('Setting up SpheroPy development conda environment.')
+    print('Setting up RandomAgent conda environment.')
     if not is_conda_available():
         print('\"conda\" is not available in this context. Are you sure you have minconda or anaconda installed and are running this from a conda environment?')
 
