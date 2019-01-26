@@ -36,13 +36,15 @@ class RandomAgent():
 
         print(f'Best reward during training: {self.best_reward}')
 
-    def play(self):
+    def play(self, should_render=True):
         self.env.reset()
         self.env.render()
         total_reward = 0
         for action in self.best_actions:
             _, reward, done, _ = self.env.step(action)
-            self.env.render()
+            if should_render:
+                self.env.render()
+
             total_reward += reward
             if done:
                 break
